@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'featured_screen.dart';
+
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
@@ -9,103 +11,63 @@ class MainHomePage extends StatefulWidget {
 }
 
 class _MainHomePageState extends State<MainHomePage> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    FeaturedScreen(),
+    FeaturedScreen(),
+    FeaturedScreen(),
+    FeaturedScreen(),
+  ];
+  
   @override
    
-int _currentIndex = 0;
-  final List<Widget> _children = [
-    Container(color: Colors.white,
-          child: Center(child: Text('Home and what not '),),), 
-             Container(color: Colors.white,
-             child: Center(child: Text('Schedule'),),),
-                 Container(color: Colors.white,
-                 child: Center(child: Text('Profile'),),),];
+
 
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-         appBar: AppBar(
-        title: Text('Homecare'),
-         backgroundColor:Color(0xFF478FE0),   
-      elevation: 5.0,
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.notifications_none),
-          iconSize: 28.0,
-          onPressed: () {},
-        ),
-      ],
-      ),
-      drawer: Drawer(
-        
-        child: ListView(
-          
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            
-              UserAccountsDrawerHeader(
-              decoration: BoxDecoration(gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-               Color(0xFF73AEF5),
-                  Color(0xFF61A4F1),
-                  Color(0xFF478FE0),
-                  Color(0xFF398AE5),
-              ],
-            ) ),     
-              accountName: Text('Ziada Oussama Yacine'),
-              accountEmail: Text('zoy@gmail.com'),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Text(
-                  'ZOY',
-                  style: TextStyle(fontSize: 30.0),
-                ),
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex)
+           ), 
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Color(0xFF398AE5),
+          unselectedItemColor: Colors.grey,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          items: [
+            BottomNavigationBarItem(
+              activeIcon: Icon(Icons.house, size: 24.0,  ),
+              icon: Icon(Icons.house_outlined, size: 24.0,),
+              label: 'home',
               ),
-            ),
-            
-            ListTile(
+            BottomNavigationBarItem(
+              activeIcon: Icon(Icons.people, size: 24.0,),
+              icon: Icon(Icons.people_outlined, size: 24.0, ),
+              label: 'Patients' ,             
+              ),
+            BottomNavigationBarItem(
+              activeIcon: Icon(Icons.calendar_month, size: 24.0,),
+              icon: Icon(Icons.calendar_month_outlined, size: 24.0,),
+              label: 'Schedule' ,
               
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              onTap: () {
-                // Update the UI based on the option selected
-              },
-            ),
-             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () {
-                // Update the UI based on the option selected
-              },
-            ),
+              ),           
+            BottomNavigationBarItem(
+              activeIcon: Icon(Icons.person, size: 24.0,),
+              icon: Icon(Icons.person_outline, size: 24.0,),
+              label: 'Profile' ,
+              
+              ),
           ],
-        ),
-      ),
-        body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label:'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label:'Schedule',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label:'Profile',
-          ),
-        ],
-      ),
+          currentIndex: _selectedIndex,
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),   
       ),
 
       );
