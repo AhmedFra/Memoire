@@ -1,9 +1,10 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../models/category.dart';
+import '../widgets/category_card.dart';
 import '../widgets/circle_button.dart';
 import '../widgets/search_text_field.dart';
 
@@ -15,6 +16,7 @@ class FeaturedScreen extends StatefulWidget {
 }
 
 class _FeaturedScreenState extends State<FeaturedScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return const AnnotatedRegion<SystemUiOverlayStyle>(
@@ -22,8 +24,8 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
       child: Scaffold(
         body: Column(
           children: [
-            AppBar()
-
+            AppBar(),
+            Body(),
           ],
         ),
       )
@@ -63,7 +65,7 @@ class _AppBarState extends State<AppBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Welcome,\nUsername !',
+              Text('Welcome,\nDude !',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -82,6 +84,48 @@ class _AppBarState extends State<AppBar> {
 
         ],
       ),
+    );
+  }
+}
+
+class Body extends StatelessWidget {
+  const Body({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var _ConsultsNum = 0;
+    return Column(
+      children: [
+        Padding(padding: const EdgeInsets.only(top: 10, left: 20, right:20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+           
+            Text('Consults for today:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+          
+            TextButton(onPressed: (){}, child: Text('$_ConsultsNum', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFF398AE5),),))
+          
+          ],
+        ),),
+        GridView.builder(
+            shrinkWrap: true,
+            
+             padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 8,
+          ),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 0.8,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 24,),
+             itemBuilder: (context, index) {
+            return CategoryCard(
+              category: categoryList[index],
+            );
+          },itemCount: categoryList.length,
+            ),
+      ],
     );
   }
 }

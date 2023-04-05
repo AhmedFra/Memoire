@@ -32,31 +32,32 @@ class _MainHomePageState extends State<MainHomePage> {
           child: _widgetOptions.elementAt(_selectedIndex)
            ), 
         bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
+          
+          type: BottomNavigationBarType.shifting,
           selectedItemColor: Color(0xFF398AE5),
           unselectedItemColor: Colors.grey,
           backgroundColor: Colors.white,
           elevation: 0,
           items: [
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.house, size: 24.0,  ),
-              icon: Icon(Icons.house_outlined, size: 24.0,),
+              activeIcon: Icon(Icons.house, size: 27.0,  ),
+              icon: Icon(Icons.house_outlined, size: 27.0,),
               label: 'home',
               ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.people, size: 24.0,),
-              icon: Icon(Icons.people_outlined, size: 24.0, ),
+              activeIcon: Icon(Icons.people, size: 27.0,),
+              icon: Icon(Icons.people_outlined, size: 27.0, ),
               label: 'Patients' ,             
               ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.calendar_month, size: 24.0,),
-              icon: Icon(Icons.calendar_month_outlined, size: 24.0,),
+              activeIcon: Icon(Icons.calendar_month, size: 27.0,),
+              icon: Icon(Icons.calendar_month_outlined, size: 27.0,),
               label: 'Schedule' ,
               
               ),           
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.person, size: 24.0,),
-              icon: Icon(Icons.person_outline, size: 24.0,),
+              activeIcon: Icon(Icons.person, size: 27.0,),
+              icon: Icon(Icons.person_outline, size: 27.0,),
               label: 'Profile' ,
               
               ),
