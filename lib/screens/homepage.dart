@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'featured_screen.dart';
+import 'profile_screen.dart';
 
 
 class MainHomePage extends StatefulWidget {
@@ -16,8 +17,7 @@ class _MainHomePageState extends State<MainHomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     FeaturedScreen(),
     FeaturedScreen(),
-    FeaturedScreen(),
-    FeaturedScreen(),
+    ProfileScreen(),
   ];
   
   @override
@@ -44,15 +44,15 @@ class _MainHomePageState extends State<MainHomePage> {
               icon: Icon(Icons.house_outlined, size: 27.0,),
               label: 'home',
               ),
+            // BottomNavigationBarItem(
+            //   activeIcon: Icon(Icons.people, size: 27.0,),
+            //   icon: Icon(Icons.people_outlined, size: 27.0, ),
+            //   label: 'Patients' ,             
+            //   ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.people, size: 27.0,),
-              icon: Icon(Icons.people_outlined, size: 27.0, ),
-              label: 'Patients' ,             
-              ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(Icons.calendar_month, size: 27.0,),
-              icon: Icon(Icons.calendar_month_outlined, size: 27.0,),
-              label: 'Schedule' ,
+              activeIcon: Icon(Icons.settings, size: 27.0,),
+              icon: Icon(Icons.settings_outlined, size: 27.0,),
+              label: 'Settings' ,
               
               ),           
             BottomNavigationBarItem(

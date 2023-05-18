@@ -12,7 +12,7 @@ class SearchTextField extends StatelessWidget {
         prefixIcon: const Icon(Icons.search, color: Color(0xFF398AE5), size: 26,),
         suffixIcon: const Icon(Icons.filter_list, color: Color(0xFF398AE5), size: 26,),
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        labelText: 'Search patients/ profiles/ etc..',
+        labelText: 'Search',
         labelStyle: TextStyle(color: Colors.black26,),
         filled: true,
         fillColor: Colors.white,

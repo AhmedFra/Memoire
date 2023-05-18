@@ -14,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   bool _rememberMe = false;
+  final _formKey = GlobalKey<FormState>();
   Widget _buildEmailTF() {
     return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +31,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         alignment: Alignment.centerLeft,
                         decoration: kBoxDecorationStyle,
                         height: 60.0,
-                        child: TextField(
+                        child: TextFormField(
+                            validator: (value) {
+                            if (value == null || value.isEmpty) {
+                            return 'Please enter your e-mail';
+                            }
+                            return null;
+                            },
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(color: Colors.white),                         
                           decoration: InputDecoration(
@@ -63,7 +70,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         alignment: Alignment.centerLeft,
                         decoration: kBoxDecorationStyle,
                         height: 60.0,
-                        child: TextField(  
+                        child: TextFormField(  
+                          validator: (value) {
+                          if (value == null || value.isEmpty) {
+                           return 'Please enter your password';
+                          }
+                           return null;
+                          },
+                          
                           keyboardType: TextInputType.text,  
                           obscureText: _obscureText,                      
                           style: TextStyle(color: Colors.white),                         
@@ -145,8 +159,17 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
   ),     
         onPressed: () {
-           Navigator.push(context, new MaterialPageRoute(builder: (context) => MainHomePage()));
+        
+        {
+    // Validate returns true if the form is valid, or false otherwise.
+    if (_formKey.currentState!.validate()) {
+      // If the form is valid, display a snackbar. In the real world,
+      // you'd often call a server or save the information in a database.
+      Navigator.push(context, new MaterialPageRoute(builder: (context) => MainHomePage()));
+    }
+  };
         },
+        
         child: Text(
           'LOGIN',
           style: TextStyle(
@@ -246,10 +269,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         // ignore: prefer_const_constructors
                         SizedBox(height: 30.0,),
-                        // ignore: prefer_const_constructors
-                        _buildEmailTF(),
+                        Form(
+                          key: _formKey,
+                          child: Column(children: [
+                          _buildEmailTF(),
                         SizedBox(height: 30.0),
                         _buildPasswordTF(),
+                        ],),),
+                        // ignore: prefer_const_constructors
                         _buildForgotPasswordBtn(),
                         _buildRememberMeCheckbox(),
                         _buildLoginBtn(),

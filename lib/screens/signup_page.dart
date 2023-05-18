@@ -18,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _confirmController = TextEditingController();
   bool _isSuccessful = false;
   var confirmPass;
-
+  final _formKey = GlobalKey<FormState>();
   Widget _buildEmailTF() {
     return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,6 +36,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         decoration: kBoxDecorationStyle,
                         height: 60.0,
                         child: TextFormField(
+                          validator: (value) {
+                           if (value == null || value.isEmpty) {
+                           return 'Please enter your e-mail';
+                           }
+                           return null;},
                           keyboardType: TextInputType.emailAddress,
                           style: TextStyle(color: Colors.white),                         
                           decoration: InputDecoration(
@@ -68,7 +73,11 @@ class _SignUpPageState extends State<SignUpPage> {
                         decoration: kBoxDecorationStyle,
                         height: 60.0,
                         child: TextFormField( 
-                          
+                           validator: (value) {
+                           if (value == null || value.isEmpty) {
+                           return 'Please enter your password';
+                           }
+                           return null;},
                           controller: _controller,
                           keyboardType: TextInputType.text,  
                           obscureText: _obscureText,                      
@@ -112,7 +121,12 @@ class _SignUpPageState extends State<SignUpPage> {
                         alignment: Alignment.centerLeft,
                         decoration: kBoxDecorationStyle,
                         height: 60.0,
-                        child: TextFormField(        
+                        child: TextFormField(  
+                           validator: (value) {
+                           if (value == null || value.isEmpty) {
+                           return 'Please enter your password';
+                           }
+                           return null;},      
                           keyboardType: TextInputType.text, 
                           obscureText: _obscureText,                      
                           style: TextStyle(color: Colors.white),                         
@@ -181,7 +195,9 @@ class _SignUpPageState extends State<SignUpPage> {
           borderRadius: BorderRadius.circular(10.0),
         ),
   ),     
-        onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => SecondSignupPage())),      
+        onPressed: () {
+         if (_formKey.currentState!.validate()) {
+         Navigator.push(context, new MaterialPageRoute(builder: (context) => SecondSignupPage()));}},
         child: Text(
           'NEXT',
           style: TextStyle(
@@ -250,8 +266,10 @@ class _SignUpPageState extends State<SignUpPage> {
                             fontWeight: FontWeight.normal),
                             ),
                             SizedBox(height: 30.0,),
-                            
-                            _buildEmailTF(),
+                            Form(
+                              key: _formKey,
+                              child: Column(children: [
+                              _buildEmailTF(),
                             SizedBox(height: 10.0,),
                             _buildPasswordTF(),
                             SizedBox(height: 30.0,),
@@ -275,7 +293,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               
                             
                             _buildConfirmPasswordTF(),
-                            SizedBox(height: 20.0,),
+                            SizedBox(height: 20.0,),                    
+                            ],)),
+                            
                             _buildSecondSignupPageBtn(),
                             
                             _buildloginBtn(),

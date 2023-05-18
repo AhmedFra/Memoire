@@ -65,7 +65,7 @@ class _AppBarState extends State<AppBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Welcome,\nDude !',
+              Text('Welcome!',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

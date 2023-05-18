@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sheesh/models/category.dart';
+import 'package:sheesh/screens/schedule_screen.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
@@ -11,7 +12,9 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ScheduleScreen()));
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
