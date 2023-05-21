@@ -26,6 +26,11 @@ List<Category> categoryList = [
 
     thumbnail: 'assets/stretcher.png',
   ),
+   Category(
+    name: 'Planning',
+   
+    thumbnail: 'assets/task-list.png',
+  ),
   // Category(
   //   name: 'Placeholder',
 

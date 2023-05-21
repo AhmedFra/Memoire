@@ -10,6 +10,8 @@ AppBar buildAppBar(BuildContext context) {
   return AppBar(
     leading: BackButton(
       color: Colors.blue,
+      
+      
     ),
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -18,6 +20,7 @@ AppBar buildAppBar(BuildContext context) {
       icon: Icon(
         Icons.save,
         color: Colors.blue,
+        // size: 32,
       ),
       onPressed: () {
         // do something
