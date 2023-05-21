@@ -9,7 +9,7 @@ AppBar buildAppBar(BuildContext context) {
 
   return AppBar(
     leading: BackButton(
-      color: Colors.blue,
+      color: Color(0xFF398AE5),
       
       
     ),
@@ -19,7 +19,7 @@ AppBar buildAppBar(BuildContext context) {
       IconButton(
       icon: Icon(
         Icons.save,
-        color: Colors.blue,
+        color: Color(0xFF398AE5),
         // size: 32,
       ),
       onPressed: () {
