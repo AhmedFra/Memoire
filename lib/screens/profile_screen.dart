@@ -126,6 +126,7 @@ class ProfileScreenBody extends StatelessWidget {
         Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildPhoneNumber(user),
+        const SizedBox(height: 10),
       ],
     );
   }
