@@ -105,15 +105,33 @@ class ProfileScreenBody extends StatelessWidget {
         const SizedBox(height: 24),
         buildName(user),
         const SizedBox(height: 10),
-        Center(child: buildEditButton(context)),
-        const SizedBox(height: 24),
-        const SizedBox(height: 48),
+        Center(child: buildEditButton(context)),   
+        const SizedBox(height: 10),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        const SizedBox(height: 10),
         buildAbout(user),
+        const SizedBox(height: 10),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        const SizedBox(height: 10),
+        buildSpecialty(user),
+        const SizedBox(height: 10),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        const SizedBox(height: 10),
+        buildGender(user),
+        const SizedBox(height: 10),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        const SizedBox(height: 10),
+        buildAddress(user),
+        const SizedBox(height: 10),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        const SizedBox(height: 10),
+        buildPhoneNumber(user),
       ],
     );
   }
 Widget buildEditButton(BuildContext context) => ButtonWidget(
   text: 'Edit info',
+  
   onClicked: () {
     Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
   },
@@ -135,17 +153,88 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
       );
 
   Widget buildAbout(User user) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 48),
+        padding: const EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Description',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              'About',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
             Text(
               user.description,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+       Widget buildSpecialty(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Specialty',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.specialty,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+       Widget buildGender(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Gender',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.gender,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+       Widget buildAddress(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Address',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.address,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+       Widget buildPhoneNumber(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Phone Number',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.phoneNumber,
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
           ],

@@ -243,29 +243,31 @@ class Body extends StatelessWidget {
 
             Padding(
               padding: EdgeInsets.only(left: 20, bottom: 10),
-              child: Text('What do you need?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+              child: Text('How can we help?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
             ),
           ],
         ),         
          
-        GridView.builder(
-              shrinkWrap: true,
-              
-               padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 8,
-            ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.8,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 24,),
-               itemBuilder: (context, index) {
-              return CategoryCard(
-                category: categoryList[index],
-              );
-            },itemCount: categoryList.length,
+        SingleChildScrollView(
+          child: GridView.builder(
+                shrinkWrap: true,
+                
+                 padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 8,
               ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.8,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 24,),
+                 itemBuilder: (context, index) {
+                return CategoryCard(
+                  category: categoryList[index],
+                );
+              },itemCount: categoryList.length,
+                ),
+        ),
         ],
       ),
     );

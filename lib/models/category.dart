@@ -12,22 +12,22 @@ class Category {
 
 List<Category> categoryList = [
   Category(
-    name: 'Planning',
+    name: 'My appointments',
    
     thumbnail: 'assets/task-list.png',
   ),
   Category(
-    name: 'Consult History',
+    name: 'My reports',
 
     thumbnail: 'assets/transaction-history.png',
   ),
   Category(
-    name: 'Patient Management',
+    name: 'My patients',
 
     thumbnail: 'assets/stretcher.png',
   ),
    Category(
-    name: 'Planning',
+    name: 'My profile',
    
     thumbnail: 'assets/task-list.png',
   ),

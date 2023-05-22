@@ -44,17 +44,17 @@ class _MainHomePageState extends State<MainHomePage> {
               icon: Icon(Icons.house_outlined, size: 27.0,),
               label: 'home',
               ),
-            // BottomNavigationBarItem(
-            //   activeIcon: Icon(Icons.people, size: 27.0,),
-            //   icon: Icon(Icons.people_outlined, size: 27.0, ),
-            //   label: 'Patients' ,             
-            //   ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.settings, size: 27.0,),
-              icon: Icon(Icons.settings_outlined, size: 27.0,),
-              label: 'Settings' ,
+              activeIcon: Icon(Icons.people, size: 27.0,),
+              icon: Icon(Icons.people_outlined, size: 27.0, ),
+              label: 'Patients' ,             
+              ),
+            // BottomNavigationBarItem(
+            //   activeIcon: Icon(Icons.settings, size: 27.0,),
+            //   icon: Icon(Icons.settings_outlined, size: 27.0,),
+            //   label: 'Settings' ,
               
-              ),           
+            //   ),           
             BottomNavigationBarItem(
               activeIcon: Icon(Icons.person, size: 27.0,),
               icon: Icon(Icons.person_outline, size: 27.0,),
