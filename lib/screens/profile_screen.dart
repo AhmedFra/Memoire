@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 import 'package:sheesh/screens/edit_profile_screen.dart';
+import 'package:sheesh/screens/featured_screen.dart';
 import '../models/user.dart';
 import '../utilities/user_pref.dart';
 import '../widgets/button_widget.dart';
@@ -64,6 +65,10 @@ class CustomAppBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+            IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MainHomePage() ));}
+                  , icon: Icon(Icons.arrow_back, color: Colors.white,))
+             ,
               Text(
                 'Profile',
                 style: TextStyle(

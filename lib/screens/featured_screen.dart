@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sheesh/screens/profile_screen.dart';
+import 'package:sheesh/screens/schedule_screen.dart';
 
 import '../models/category.dart';
 import '../widgets/category_card.dart';
@@ -248,26 +250,95 @@ class Body extends StatelessWidget {
           ],
         ),         
          
-        SingleChildScrollView(
-          child: GridView.builder(
-                shrinkWrap: true,
-                
-                 padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 8,
-              ),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.8,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 24,),
-                 itemBuilder: (context, index) {
-                return CategoryCard(
-                  category: categoryList[index],
-                );
-              },itemCount: categoryList.length,
-                ),
+        GridView.count(
+  shrinkWrap: true,
+  crossAxisCount: 2,
+  childAspectRatio: 0.8,
+  crossAxisSpacing: 20,
+  mainAxisSpacing: 24,
+  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+  children: [
+    GestureDetector(
+      onTap: () {
+        // Handle navigation for Category 1
+         Navigator.push(context,MaterialPageRoute(builder: (context) => ScheduleScreen()));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueGrey[100],
+          borderRadius: BorderRadius.circular(12),
         ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/task-list.png',),
+            SizedBox(height: 10),
+            Text('My appointments', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          ],
+        ),
+      ),
+    ),
+    GestureDetector(
+      onTap: () {
+        // Handle navigation for Category 2
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueGrey[100],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/report.png',),
+            SizedBox(height: 10),
+            Text('My reports', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          ],
+        ),
+      ),
+    ),
+    GestureDetector(
+      onTap: () {
+        // Handle navigation for Category 3
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueGrey[100],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/contracter.png',),
+            SizedBox(height: 10),
+            Text('My patients', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          ],
+        ),
+      ),
+    ),
+    GestureDetector(
+      onTap: () {
+        // Handle navigation for Category 4
+         Navigator.push(context,MaterialPageRoute(builder: (context) => ProfileScreen()));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.blueGrey[100],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/utilisateur.png', ),
+            SizedBox(height: 10),
+            Text('My profile', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+          ],
+        ),
+      ),
+    ),
+  ],
+),
+
         ],
       ),
     );
