@@ -65,6 +65,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                  
                   onChanged: (phoneNumber) {},
                 ),
+                const SizedBox(height: 24),
+                TextFieldWidget(
+                  label: 'Birthdate',
+                  text: user.birthdate,
+                 
+                  onChanged: (birthdate) {},
+                ),
                 const SizedBox(height: 50),
               ],
             ),

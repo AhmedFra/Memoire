@@ -126,7 +126,9 @@ class ProfileScreenBody extends StatelessWidget {
         Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildPhoneNumber(user),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
+        buildBirthDate(user),
       ],
     );
   }
@@ -238,7 +240,28 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
               user.phoneNumber,
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
+
+            
           ],
         ),
       );
+
+      Widget buildBirthDate(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Birthdate',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.birthdate,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+               ],
+        ),
+      );
+
 }

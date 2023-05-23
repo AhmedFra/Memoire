@@ -7,6 +7,7 @@ class User {
   final String phoneNumber;
   final String address;
   final String gender;
+  final String birthdate;
 
   const User({
     required this.imagePath,
@@ -17,5 +18,6 @@ class User {
     required this.phoneNumber,
     required this.address,
     required this.gender,
+    required this.birthdate,
   });
 }

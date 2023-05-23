@@ -10,5 +10,6 @@ class UserPreferences {
     phoneNumber: '0794625739',
     address: 'Cité 1200 bt 60, 25100, El Khroub',
     gender: 'Male',
+    birthdate: '22/09/2002',
   );
 }
