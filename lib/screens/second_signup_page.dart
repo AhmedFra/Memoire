@@ -250,6 +250,37 @@ Widget _buildBirthdayTF() {
                   );
   }
 
+Widget _buildGenderTF() {
+    return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      // ignore: prefer_const_constructors
+                      Text('Gender',
+                      // ignore: prefer_const_constructors
+                      style: kLabelStyle,                   
+                      ),
+                      // ignore: prefer_const_constructors
+                      SizedBox(height: 10.0,),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        decoration: kBoxDecorationStyle,
+                        height: 60.0,
+                        child: TextFormField(
+                          
+                          style: TextStyle(color: Colors.white),                         
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.only(top: 14.0),
+                            prefixIcon: Icon(Icons.male, color: Colors.white),
+                            hintText: 'Enter your gender',
+                            hintStyle: kHintTextStyle,
+                          ),        
+                        ),
+                        ),
+                    ],
+                  );
+  }
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -324,6 +355,8 @@ Widget _buildBirthdayTF() {
                             _buildBirthdayTF(),
                             SizedBox(height: 10.0,),
                             _buildAddressTF(),
+                            SizedBox(height: 10.0,),
+                            _buildGenderTF(),
                             SizedBox(height: 10.0,),
                             _buildSignupBtn(),                       
                             _buildloginBtn(),

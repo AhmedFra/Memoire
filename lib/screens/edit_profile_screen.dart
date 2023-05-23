@@ -51,6 +51,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   maxLines: 5,
                   onChanged: (about) {},
                 ),
+                const SizedBox(height: 24),
+                TextFieldWidget(
+                  label: 'Address',
+                  text: user.address,
+                  
+                  onChanged: (address) {},
+                ),
+                const SizedBox(height: 24),
+                TextFieldWidget(
+                  label: 'Phone number',
+                  text: user.phoneNumber,
+                 
+                  onChanged: (phoneNumber) {},
+                ),
+                const SizedBox(height: 50),
               ],
             ),
           ),
