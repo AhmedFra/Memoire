@@ -19,17 +19,17 @@ List<Category> categoryList = [
   Category(
     name: 'My reports',
 
-    thumbnail: 'assets/transaction-history.png',
+    thumbnail: 'assets/report.png',
   ),
   Category(
     name: 'My patients',
 
-    thumbnail: 'assets/stretcher.png',
+    thumbnail: 'assets/contracter.png',
   ),
    Category(
     name: 'My profile',
    
-    thumbnail: 'assets/task-list.png',
+    thumbnail: 'assets/utilisateur.png',
   ),
   // Category(
   //   name: 'Placeholder',
