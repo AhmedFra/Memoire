@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sheesh/screens/profile_screen.dart';
 import 'package:sheesh/screens/schedule_screen.dart';
-
-import '../models/category.dart';
-import '../widgets/category_card.dart';
 import '../widgets/circle_button.dart';
 import '../widgets/search_text_field.dart';
 
@@ -116,7 +113,7 @@ class Body extends StatelessWidget {
           child: Container(
             height: 100,        
             decoration: BoxDecoration(
-            color: Colors.blueGrey[100], 
+            color: Color.fromARGB(255, 229, 235, 238), 
             borderRadius: BorderRadius.circular(12),         
             ),
              child: Padding(
@@ -173,7 +170,7 @@ class Body extends StatelessWidget {
           child: Container(
             height: 100,        
             decoration: BoxDecoration(
-            color: Colors.blueGrey[100], 
+            color: Color.fromARGB(255, 229, 235, 238), 
             borderRadius: BorderRadius.circular(12),         
             ),
              child: Padding(
@@ -265,7 +262,7 @@ class Body extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[100],
+          color: Color.fromARGB(255, 229, 235, 238),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -284,7 +281,7 @@ class Body extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[100],
+          color: Color.fromARGB(255, 229, 235, 238),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -303,7 +300,7 @@ class Body extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[100],
+          color: Color.fromARGB(255, 229, 235, 238),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -323,7 +320,7 @@ class Body extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blueGrey[100],
+          color: Color.fromARGB(255, 229, 235, 238),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(

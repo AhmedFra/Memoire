@@ -39,6 +39,7 @@ dependencies:
   bubble_tab_indicator: 0.1.6 
   editable_image: ^2.0.0
   image_picker: ^0.8.7+5
+  calendar_timeline: ^1.1.2
 dev_dependencies:
   
 
