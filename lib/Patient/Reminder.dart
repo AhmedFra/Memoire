@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:intl/intl.dart';
+
+import 'Shedule/CalendarTimeline.dart';
 
 class Reminders extends StatefulWidget {
   const Reminders({Key? key}) : super(key: key);
@@ -15,51 +18,77 @@ class _RemindersState extends State<Reminders> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
-        elevation: 0,
-        title: Row(
-          children: [
-            GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: const Icon(
-                Icons.arrow_back,
-                size: 30,
-                color: Colors.black,
+      
+      body: 
+
+          Column(
+            children: [
+              CustomAppBar(),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 20,),
+                    child: Column(
+                      children: [
+                        Text(DateFormat.yMMMEd().format(DateTime.now()),
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),)
+                      ],
+                    ),
+                  )
+                ],
               ),
-            ),
-            SizedBox(width: 15,),
-            Text(
-              "Medicine Reminder",
-              style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
-            ),
+              CustomCalendarTimeline(),
+
+            
+            ],
+          ),
+       
+    );
+  }
+}
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Size get preferredSize => const Size.fromHeight(70);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+      height: preferredSize.height,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF73AEF5),
+            Color(0xFF61A4F1),
+            Color(0xFF478FE0),
+            Color(0xFF398AE5),
           ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
       ),
-      body: ListView(
-        physics: BouncingScrollPhysics(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CalendarTimeline(
-            initialDate: _selectedDate,
-            firstDate: DateTime(DateTime.now().year - 1),
-            lastDate: DateTime(DateTime.now().year + 1),
-            onDateSelected: (date) {
-              setState(() {
-                _selectedDate = date;
-              });
-            },
-            leftMargin: 20,
-            monthColor: Colors.blue,
-            dayColor: Colors.grey,
-            dayNameColor: Color.fromARGB(255, 0, 0, 0),
-            activeDayColor: Colors.white,
-            activeBackgroundDayColor: Colors.blue,
-            dotsColor: Color.fromARGB(255, 0, 0, 255),
-            selectableDayPredicate: (date) => true,
-            showYears: true,
-            
+          Text(
+            'Medicine Reminder',
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1,
+              fontSize: 24.0,
+            ),
           ),
+          // Add any other widgets or icons here
         ],
       ),
     );
