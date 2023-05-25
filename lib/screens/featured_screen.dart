@@ -18,7 +18,7 @@ class _FeaturedScreenState extends State<FeaturedScreen> {
   
   @override
   Widget build(BuildContext context) {
-    return const AnnotatedRegion<SystemUiOverlayStyle>(
+    return  AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
         body: Column(

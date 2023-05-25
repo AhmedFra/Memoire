@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:flutter/services.dart';
+import 'package:sheesh/Patient/homepage.dart';
 // ignore: unused_import
 import 'package:sheesh/screens/login_page.dart';
 import 'package:sheesh/screens/onboarding_screens.dart';
@@ -16,7 +17,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnboardingScreenHomecare(),
+      home: Patient(),
     );
   }
 }

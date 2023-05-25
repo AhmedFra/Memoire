@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 import 'package:sheesh/screens/edit_profile_screen.dart';
-import 'package:sheesh/screens/featured_screen.dart';
 import '../models/user.dart';
 import '../utilities/user_pref.dart';
 import '../widgets/button_widget.dart';
 
 import '../widgets/circle_button.dart';
 import '../widgets/profile_widget.dart';
-import 'homepage.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key});
+
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return  AnnotatedRegion<SystemUiOverlayStyle>(
@@ -27,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: Column(
           children: [
             CustomAppBar(),
-            Expanded(child: ProfileScreenBody()),
+            Expanded(child: ProfilePageBody()),
           ],
         ),
       ),
@@ -65,10 +64,6 @@ class CustomAppBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-            IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MainHomePage() ));}
-                  , icon: Icon(Icons.arrow_back, color: Colors.white,))
-             ,
               Text(
                 'Profile',
                 style: TextStyle(
@@ -91,8 +86,8 @@ class CustomAppBar extends StatelessWidget {
   }
 }
 
-class ProfileScreenBody extends StatelessWidget {
-  const ProfileScreenBody({Key? key});
+class ProfilePageBody extends StatelessWidget {
+  const ProfilePageBody({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +96,7 @@ class ProfileScreenBody extends StatelessWidget {
     return ListView(
       physics: BouncingScrollPhysics(),
       children: [
-        const SizedBox(height: 10),
+        const SizedBox(height: 0),
         ProfileWidget(
           imagePath: user.imagePath,
           onClicked: () async {},
@@ -112,28 +107,26 @@ class ProfileScreenBody extends StatelessWidget {
         const SizedBox(height: 10),
         Center(child: buildEditButton(context)),   
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black54 ,endIndent: 20,indent: 20,),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildAbout(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black54 ,endIndent: 20,indent: 20,),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildSpecialty(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black54 ,endIndent: 20,indent: 20,),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildGender(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black54 ,endIndent: 20,indent: 20,),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildAddress(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black54 ,endIndent: 20,indent: 20,),
+        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
         buildPhoneNumber(user),
-        Divider(height: 10,color:Colors.black54 ,endIndent: 20,indent: 20,),
         const SizedBox(height: 10),
-        buildBirthDate(user),
       ],
     );
   }
@@ -245,28 +238,7 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
               user.phoneNumber,
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
-
-            
           ],
         ),
       );
-
-      Widget buildBirthDate(User user) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Birthdate',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              user.birthdate,
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-               ],
-        ),
-      );
-
 }

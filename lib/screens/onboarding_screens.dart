@@ -80,7 +80,7 @@ class _OnboardingScreenHomecareState extends State<OnboardingScreenHomecare> {
                           _currentPage = page;
                         });
                       },
-                      children: const <Widget>[
+                      children:  <Widget>[
                         Padding(
                           padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                           child: Column(
@@ -197,7 +197,7 @@ class _OnboardingScreenHomecareState extends State<OnboardingScreenHomecare> {
                   child: TextButton(onPressed: () {
                     _pageController.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.ease);
                   }, 
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
