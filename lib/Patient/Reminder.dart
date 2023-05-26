@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:intl/intl.dart';
-
+import 'package:get/get.dart';
 import 'Shedule/CalendarTimeline.dart';
+import 'Shedule/mybutton.dart';
+import 'Shedule/pagemedcine.dart';
+import 'package:get/get.dart';
+
 
 class Reminders extends StatefulWidget {
   const Reminders({Key? key}) : super(key: key);
@@ -25,21 +29,26 @@ class _RemindersState extends State<Reminders> {
             children: [
               CustomAppBar(),
               SizedBox(height: 10,),
-              Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20,),
-                    child: Column(
-                      children: [
-                        Text(DateFormat.yMMMEd().format(DateTime.now()),
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),)
-                      ],
+              Container(
+                margin: EdgeInsets.only(left: 20 ,right: 20,top: 10),
+                child: Row(
+                  mainAxisAlignment:MainAxisAlignment.spaceBetween ,
+                  children: [
+                    Container(
+                      
+                      child: Column(
+                        children: [
+                          Text(DateFormat.yMMMEd().format(DateTime.now()),
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),)
+                        ],
+                      ),
                     ),
-                  )
-                ],
+                    Mybutton(label:"+ Add Medcine" ,onTap:() =>Get.to(Addpage()), ),
+                  ],
+                ),
               ),
               CustomCalendarTimeline(),
 
