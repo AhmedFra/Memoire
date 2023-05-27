@@ -46,7 +46,7 @@ class _RemindersState extends State<Reminders> {
                         ],
                       ),
                     ),
-                    Mybutton(label:"+ Add Medcine" ,onTap:() =>Get.to(Addpage()), ),
+                    Mybutton(label:"+ Add Medcine" ,onTap:() =>Get.to(Addpage()) ),
                   ],
                 ),
               ),

@@ -32,6 +32,7 @@ class _CustomCalendarTimelineState extends State<CustomCalendarTimeline> {
             dotsColor: Color.fromARGB(255, 0, 0, 255),
             selectableDayPredicate: (date) => true,
             showYears: false
+            
           ),
           
         ],

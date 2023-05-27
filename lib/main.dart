@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:flutter/services.dart';
 import 'package:sheesh/Patient/homepage.dart';
+import 'package:sheesh/db/db_helper.dart';
 // ignore: unused_import
 import 'package:sheesh/screens/login_page.dart';
 import 'package:sheesh/screens/onboarding_screens.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
 
 import 'Patient/Shedule/pagemedcine.dart';
 
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DBhelper.initDb();
+  await GetStorage.init();
   runApp(const MainApp());
 }
 class AppController extends GetxController {
