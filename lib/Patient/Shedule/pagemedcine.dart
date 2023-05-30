@@ -189,7 +189,7 @@ class _AddpageState extends State<Addpage> {
 
 _validdateDate(){
   if(_titleController.text.isNotEmpty&&_noteController.text.isNotEmpty){
-    _addatatoDb();
+    _addTaskYoDb();
     Get.back();
   }else if(_titleController.text.isEmpty||_noteController.text.isEmpty){
     Get.snackbar("Required", "All fields are required !",
@@ -198,7 +198,7 @@ _validdateDate(){
     icon:Icon(Icons.warning_amber_rounded) );
   }
 }
-  _addatatoDb() async{
+  _addTaskYoDb() async{
     int value =await _taskController.addTask(
       task:Task(
       note: _noteController.text,
@@ -210,7 +210,7 @@ _validdateDate(){
       Repeat: _selectedRepeat,
       color: _selectedColor,
       isCompleted: 0, 
-
+      
     )
 
     );

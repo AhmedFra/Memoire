@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
+import '../controllers/meddcine_controller.dart';
 import 'Shedule/CalendarTimeline.dart';
 import 'Shedule/mybutton.dart';
 import 'Shedule/pagemedcine.dart';
@@ -17,6 +18,8 @@ class Reminders extends StatefulWidget {
 
 class _RemindersState extends State<Reminders> {
   DateTime _selectedDate = DateTime.now();
+  final _taskController = Get.put(meddcinecontroller());
+  var notifyHelper;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,38 @@ class _RemindersState extends State<Reminders> {
             children: [
               CustomAppBar(),
               SizedBox(height: 10,),
-              Container(
+              _addCalender(),
+              CustomCalendarTimeline(),
+              _showTasks(),
+            
+            ],
+          ),
+       
+    );
+  }
+
+  _showTasks(){
+    return Expanded(
+      child: Obx(() {
+        return ListView.builder(
+          itemCount: _taskController.taskList.length,
+          itemBuilder: (_, context){
+            print(_taskController.taskList.length);
+              return Container(
+                width: 200,
+                height: 100,
+                color: Colors.green,
+                  margin: EdgeInsets.only(bottom: 10),
+
+              );
+          });
+      },)
+    
+    );
+  }
+
+  _addCalender() {
+    return Container(
                 margin: EdgeInsets.only(left: 20 ,right: 20,top: 10),
                 child: Row(
                   mainAxisAlignment:MainAxisAlignment.spaceBetween ,
@@ -46,17 +80,15 @@ class _RemindersState extends State<Reminders> {
                         ],
                       ),
                     ),
-                    Mybutton(label:"+ Add Medcine" ,onTap:() =>Get.to(Addpage()) ),
+                    Mybutton(label:"+ Add Medcine" ,onTap:()async {
+                     await Get.to(Addpage());
+                     _taskController.getTasks();
+
+                      
+                      } ),
                   ],
                 ),
-              ),
-              CustomCalendarTimeline(),
-
-            
-            ],
-          ),
-       
-    );
+              );
   }
 }
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {

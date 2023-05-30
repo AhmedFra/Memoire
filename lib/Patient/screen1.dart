@@ -200,7 +200,7 @@ class Body extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => AppointmentPage(
-                                specialistItem: item,
+                               
                               ),
                             ),
                           );
