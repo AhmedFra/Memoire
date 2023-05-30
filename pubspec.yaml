@@ -45,9 +45,8 @@ dependencies:
   http: ^0.13.4
   intl: 
   get: ^4.6.5
-  sqflite: ^2.2.8+4
+  sqflite:
   get_storage: ^2.1.1
-  
 dev_dependencies:
   
 

@@ -15,9 +15,10 @@ class _BookAmbulanceState extends State<BookAmbulace> {
   List<String> cities = ['City 1', 'City 2', 'City 3'];
 
   FormData formData = FormData(yourArea: '', detailAddress: '');
-  DestinationPoint destinationPoint = DestinationPoint(yourArea: '', detailAddress: '');
+  DestinationPoint destinationPoint = DestinationPoint(yourArea1: '', detailAddress1: '');
 
   final _formKey = GlobalKey<FormState>();
+  final _formKey1 = GlobalKey<FormState>();
 
   void _continueButtonPressed() async {
     if (_formKey.currentState!.validate()) {
@@ -31,9 +32,19 @@ class _BookAmbulanceState extends State<BookAmbulace> {
           ),
         ),
       );
+    }else if (_formKey1.currentState!.validate()) {
+      _formKey1.currentState!.save();
+        Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Mapambulance(
+            formData: formData,
+            destinationPoint: destinationPoint,
+          )));
     }
   }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -179,40 +190,16 @@ class _BookAmbulanceState extends State<BookAmbulace> {
               SizedBox(height: 10,),
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Your Area',
-                        labelStyle: TextStyle(fontSize: 25, color: Colors.black),
-                        hintText: 'City',
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black, width: 0.5),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey, width: 0.8),
-                        ),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your area';
-                        }
-                        return null;
-                      },
-                      onSaved: (value) {
-                        destinationPoint.yourArea = value!;
-                      },
-                    ),
-                    SizedBox(height: 40,),
-                    Container(
-                      height: 80,
-                      child: TextFormField(
+                child: Form(
+                  key: _formKey1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormField(
                         decoration: InputDecoration(
-                          labelText: 'Detail Address',
+                          labelText: 'Your Area',
                           labelStyle: TextStyle(fontSize: 25, color: Colors.black),
-                          hintText: 'Address',
+                          hintText: 'City',
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black, width: 0.5),
                           ),
@@ -223,16 +210,43 @@ class _BookAmbulanceState extends State<BookAmbulace> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter detail address';
+                            return 'Please enter your area';
                           }
                           return null;
                         },
                         onSaved: (value) {
-                          destinationPoint.detailAddress = value!;
+                          destinationPoint.yourArea1 = value!;
                         },
                       ),
-                    )
-                  ],
+                      SizedBox(height: 40,),
+                      Container(
+                        height: 80,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            labelText: 'Detail Address',
+                            labelStyle: TextStyle(fontSize: 25, color: Colors.black),
+                            hintText: 'Address',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black, width: 0.5),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey, width: 0.8),
+                            ),
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter detail address';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) {
+                            destinationPoint.detailAddress1 = value!;
+                          },
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(
@@ -275,8 +289,8 @@ class FormData {
 }
 
 class DestinationPoint {
-  String yourArea;
-  String detailAddress;
+  String yourArea1;
+  String detailAddress1;
 
-  DestinationPoint({required this.yourArea, required this.detailAddress});
+  DestinationPoint({required this.yourArea1, required this.detailAddress1});
 }

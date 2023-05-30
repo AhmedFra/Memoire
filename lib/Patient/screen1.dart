@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:sheesh/widgets/circle_button.dart';
 import 'Appointment/Appointmentpages.dart';
 import 'Appointment/bookambalnce.dart';
 class App extends StatelessWidget {
@@ -261,13 +261,13 @@ class CircleButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          primary: Colors.white,
+          primary: Color(0xFF73AEF5),
           padding: const EdgeInsets.all(0),
         ),
         onPressed: onPressed,
         child: Icon(
           icon,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
     );
