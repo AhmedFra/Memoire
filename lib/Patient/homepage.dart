@@ -5,6 +5,7 @@ import 'package:sheesh/Patient/Feedbacks.dart';
 import '../widgets/circle_button.dart';
 import 'Reminder.dart';
 import 'Symptoms.dart';
+import 'home.dart';
 
 class Patient extends StatefulWidget {
   const Patient({Key? key});
@@ -16,9 +17,9 @@ class Patient extends StatefulWidget {
 class _PatientState extends State<Patient> {
   int _selectedIndex = 0;
   static  List<Widget> _widgetOptions = <Widget>[
-    Appointment(),
-    Reminders(),
+    HomeScreen(),
     SymptomTrackingPage(),
+    Reminders(),
     ProfilePage(),
   ];
 

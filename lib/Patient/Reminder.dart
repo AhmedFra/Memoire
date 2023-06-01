@@ -1,3 +1,4 @@
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:intl/intl.dart';
@@ -33,7 +34,7 @@ class _RemindersState extends State<Reminders> {
               CustomAppBar(),
               SizedBox(height: 10,),
               _addCalender(),
-              CustomCalendarTimeline(),
+              _addMycalender(),
               _showTasks(),
             
             ],
@@ -89,6 +90,39 @@ class _RemindersState extends State<Reminders> {
                   ],
                 ),
               );
+  }
+  _addMycalender(){
+    return Container(
+              margin: EdgeInsets.only(top:10,left: 20),
+              child:
+                
+               DatePicker(
+                DateTime.now(),
+                height: 100,
+                width: 80,
+                initialSelectedDate: DateTime.now(),
+                selectedTextColor: Colors.white,
+                selectionColor: Colors.blue,
+                dateTextStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey
+                ),
+                monthTextStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey
+                ),
+                dayTextStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey
+                ),
+                onDateChange: (date) {
+                  _selectedDate=date;
+                },
+              ),
+            );
   }
 }
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
