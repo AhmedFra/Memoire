@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:sheesh/db/db_helper.dart';
 import 'package:sheesh/screens/onboarding_screens.dart';
 
+import 'Admin/homepage.dart';
 import 'Patient/Shedule/pagemedcine.dart';
 import 'Patient/homepage.dart';
 
@@ -23,7 +24,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => const Patient()),
+        GetPage(name: '/', page: () =>  DriverDashboardScreen()),
         GetPage(name: '/addpage', page: () => const Addpage()),
       ],
     );

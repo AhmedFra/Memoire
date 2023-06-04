@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
              ListView.builder(
               shrinkWrap: true,
-              itemCount: 2,
+              itemCount: 8,
               itemBuilder: (context, index) {
                 return Padding( 
                   padding:EdgeInsets.symmetric(horizontal: 5, vertical: 10),
