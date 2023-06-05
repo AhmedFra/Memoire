@@ -18,6 +18,95 @@ class Reminders extends StatefulWidget {
 }
 
 class _RemindersState extends State<Reminders> {
+   void _showBottomSheet2() {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: () {
+                // Handle cancel appointment button press
+                Navigator.pop(context);
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 4),
+                width: MediaQuery.of(context).size.width*0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.blue
+                  ),
+                  color: Colors.lightBlue,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                height: 55,
+                child: Text(
+                  'Edit ',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                // Handle edit appointment button press
+                Navigator.pop(context);
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 4),
+                width: MediaQuery.of(context).size.width*0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.red
+                  ),
+                  color: Color.fromARGB(255, 247, 81, 69),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                height: 50,
+                child: Text(
+                  'Cancel ',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                // Handle close button press
+                Navigator.pop(context);
+              },
+              child: Container(
+                 margin: EdgeInsets.symmetric(vertical: 4),
+                width: MediaQuery.of(context).size.width*0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.grey
+                  ),
+                  color: Color.fromARGB(255, 199, 199, 199),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                height: 50,
+                child: Text(
+                  'Close',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
   DateTime _selectedDate = DateTime.now();
   final _taskController = Get.put(meddcinecontroller());
   var notifyHelper;
@@ -35,7 +124,15 @@ class _RemindersState extends State<Reminders> {
               SizedBox(height: 10,),
               _addCalender(),
               _addMycalender(),
-              _showTasks(),
+              SizedBox(height: 20,),
+              Expanded(
+                child: ListView.builder(
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                return buildAppointmentContainer(context);
+                           },
+                        ),
+              ),
             
             ],
           ),
@@ -124,7 +221,262 @@ class _RemindersState extends State<Reminders> {
               ),
             );
   }
+
+Widget buildAppointmentContainer(BuildContext context) {
+    return InkWell(
+      onTap:() {
+        _showBottomSheet2();
+  },
+      child: Container(
+        margin: EdgeInsets.only(top: 10, left: 20,right: 20),
+        height: 130,
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 240, 240, 240),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Colors.grey.shade300,
+            width: 1.0,
+          ),
+        ),
+        child: Stack(
+          alignment: Alignment.topRight,
+          children: [
+            Positioned(
+              top: 15,
+              right: 15,
+              child:  Expanded(
+                        child: Image.asset(
+                          'capsule22.png',
+                          width: 24,
+                          height: 24,
+                        ),
+                      ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 38),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Omega 3',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 4.0),
+                    Text(
+                      '1 capsule | 300mg',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(height: 12.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 124,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            border: Border.all(
+                            color: Colors.red,
+                             width: 2.0,
+                             ),  
+                            color: Color.fromARGB(255, 250, 148, 130),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Before Eating',
+                              style: TextStyle(fontSize: 16,color: Color.fromARGB(255, 250, 82, 69)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 15),
+                        Container(
+                          width: 124,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            color: Color.fromARGB(255, 206, 205, 205),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Breakfast',
+                              style: TextStyle(fontSize: 16,color: Color.fromARGB(255, 139, 136, 136)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 15),
+                        Expanded(
+                          child: Container(
+                            width: 124,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Color.fromARGB(255, 101, 185, 253),
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                  showModalBottomSheet(
+                              context: context,
+                             builder: (context) {
+                              return buildBottomSheetContent();
+                                    },
+                                   );
+                                    },
+                              child: Center(
+                                child: Text(
+                                  'View Details',
+                                  style: TextStyle(fontSize: 16,color: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  
+  }
+
+
+
+
+
+Widget buildBottomSheetContent() {
+    return Container(
+      height: 300,
+      child: Column(
+        children: [
+          // Add your bottom sheet content here
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 38),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Omega 3',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                     Text(
+                      'Program',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                     Text(
+                          'Total 4 weeks | 1 week left',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey,
+                          ),),
+                     Text(
+                      'Quantity',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                          'Total 120 capsules | 40 capsules left',
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey,
+                          ),),
+                          Row(
+                            children: [
+                              Text(
+                      'Before Eating :',
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 5,),
+                         Text(
+                      'Breakfast',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 143, 139, 139),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                            ],
+                          ),
+                  ],
+                ),
+              ),
+              SizedBox(width: 10,),
+              
+                      Expanded(
+                        child: Image.asset(
+                          'Omega323.png',
+                          width: 200,
+                          height: 200,
+                        ),
+                      ),
+            ],
+          ),
+          
+          // Add more widgets to display the details of the appointment
+          
+          GestureDetector(
+                onTap: () {
+                  // Handle edit appointment button press
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 4),
+                  width: MediaQuery.of(context).size.width*0.9,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 2,
+                      color: Colors.red
+                    ),
+                    color: Color.fromARGB(255, 247, 81, 69),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  alignment: Alignment.center,
+                  height: 50,
+                  child: Text(
+                    'Close',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+          
+        ],
+      ),
+    );
+  }
+
+
+
 }
+
+
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(70);
@@ -169,3 +521,97 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
+  
+class CustomDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      child: Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+              onTap: () {
+                // Handle cancel appointment button press
+                Navigator.pop(context);
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 4),
+                width: MediaQuery.of(context).size.width*0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.blue
+                  ),
+                  color: Colors.lightBlue,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                height: 55,
+                child: Text(
+                  'Edit',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                // Handle edit appointment button press
+                Navigator.pop(context);
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 4),
+                width: MediaQuery.of(context).size.width*0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.red
+                  ),
+                  color: Color.fromARGB(255, 247, 81, 69),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                height: 50,
+                child: Text(
+                  'Delete',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            GestureDetector(
+              onTap: () {
+                // Handle close button press
+                Navigator.pop(context);
+              },
+              child: Container(
+                 margin: EdgeInsets.symmetric(vertical: 4),
+                width: MediaQuery.of(context).size.width*0.9,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.grey
+                  ),
+                  color: Color.fromARGB(255, 199, 199, 199),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                alignment: Alignment.center,
+                height: 50,
+                child: Text(
+                  'Close',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+  

@@ -2,7 +2,7 @@
 import 'package:sheesh/Patient/Appointment/bookambalnce.dart';
 import 'package:flutter/material.dart' as FlutterMaterial;
 import '../screen1.dart';
-import 'maps.dart';
+
 
 class Mapambulance extends StatefulWidget {
   final FormData formData;
@@ -79,10 +79,7 @@ class _MapambulanceState extends State<Mapambulance> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MapApp()),
-                  );
+                
                 },
                 child: Container(
                   width: 400,

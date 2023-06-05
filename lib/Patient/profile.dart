@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Scaffold(
         body: Column(
           children: [
-            CustomAppBar(),
+            CustomAppBar2(),
             Expanded(child: ProfilePageBody()),
           ],
         ),
@@ -34,14 +34,15 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key});
+class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Size get preferredSize => const Size.fromHeight(70);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      height: 110,
+      padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+      height: preferredSize.height,
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -59,24 +60,22 @@ class CustomAppBar extends StatelessWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: Column(
+      child: ListView(
+        shrinkWrap: true,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Profile',
-                style: TextStyle(
+                'Profile!',
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1,
                   fontSize: 24.0,
                 ),
               ),
-              CircleButton(
-                icon: Icons.notifications,
-                onPressed: () {},
-              ),
+              
             ],
           ),
           const SizedBox(height: 20),

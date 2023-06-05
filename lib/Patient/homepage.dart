@@ -18,7 +18,7 @@ class _PatientState extends State<Patient> {
   int _selectedIndex = 0;
   static  List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    SymptomTrackingPage(),
+    // SymptomTrackingPage(),
     Reminders(),
     ProfilePage(),
   ];
@@ -49,15 +49,15 @@ class _PatientState extends State<Patient> {
               icon: Icon(Icons.home_outlined, size: 27.0),
               label: 'Home',
             ),
+            // BottomNavigationBarItem(
+            //   activeIcon: Icon(Icons.calendar_month_rounded, size: 27.0),
+            //   icon: Icon(Icons.calendar_month_outlined, size: 27.0),
+            //   label: 'Appointments',
+            // ),
             BottomNavigationBarItem(
               activeIcon: Icon(Icons.calendar_month_rounded, size: 27.0),
               icon: Icon(Icons.calendar_month_outlined, size: 27.0),
-              label: 'Appointments',
-            ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(Icons.healing_outlined, size: 27.0),
-              icon: Icon(Icons.healing_outlined, size: 27.0),
-              label: 'Symptoms',
+              label: 'Reminder',
             ),
             BottomNavigationBarItem(
               activeIcon: Icon(Icons.person, size: 27.0),
