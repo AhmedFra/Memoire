@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
+import 'package:sheesh/Patient/pateintpage.dart';
 import 'package:sheesh/screens/edit_profile_screen.dart';
+import 'package:sheesh/screens/featured_screen.dart';
 import '../models/user.dart';
 import '../utilities/user_pref.dart';
 import '../widgets/button_widget.dart';
 
 import '../widgets/circle_button.dart';
 import '../widgets/profile_widget.dart';
+import 'homepage.dart';
 
-
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return  AnnotatedRegion<SystemUiOverlayStyle>(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
         body: Column(
           children: [
-            CustomAppBar2(),
-            Expanded(child: ProfilePageBody()),
+            CustomAppBar(),
+            Expanded(child: ProfileScreenBody()),
           ],
         ),
       ),
@@ -34,15 +36,14 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Size get preferredSize => const Size.fromHeight(70);
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
-      height: preferredSize.height,
+      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+      height: 110,
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -60,34 +61,47 @@ class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
           end: Alignment.bottomCenter,
         ),
       ),
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context); // Go back to the previous page
+                },
+              ),
               Text(
-                'Profile!',
-                style: const TextStyle(
+                'Profile',
+                style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1,
                   fontSize: 24.0,
                 ),
               ),
-              
+              CircleButton(
+                icon: Icons.notifications,
+                onPressed: () {},
+              ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 12),
         ],
       ),
     );
   }
 }
 
-class ProfilePageBody extends StatelessWidget {
-  const ProfilePageBody({Key? key});
+class ProfileScreenBody extends StatefulWidget {
+  const ProfileScreenBody({Key? key});
 
+  @override
+  State<ProfileScreenBody> createState() => _ProfileScreenBodyState();
+}
+
+class _ProfileScreenBodyState extends State<ProfileScreenBody> {
   @override
   Widget build(BuildContext context) {
     final user = UserPreferences.myUser;
@@ -95,7 +109,7 @@ class ProfilePageBody extends StatelessWidget {
     return ListView(
       physics: BouncingScrollPhysics(),
       children: [
-        const SizedBox(height: 0),
+        const SizedBox(height: 10),
         ProfileWidget(
           imagePath: user.imagePath,
           onClicked: () async {},
@@ -104,39 +118,60 @@ class ProfilePageBody extends StatelessWidget {
         const SizedBox(height: 24),
         buildName(user),
         const SizedBox(height: 10),
-        Center(child: buildEditButton(context)),   
-        const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        Center(child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildEditButton(context),
+             buildAnotherButton(context),
+          ],
+        )),
+
         const SizedBox(height: 10),
         buildAbout(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
         buildSpecialty(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
         buildGender(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
         buildAddress(user),
         const SizedBox(height: 10),
-        Divider(height: 10,color:Colors.black ,endIndent: 20,indent: 20,),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
         buildPhoneNumber(user),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
+        buildBirthDate(user),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+        buildYearsExp(user),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+        buildInstitution(user),
+        const SizedBox(height: 10),
+    
       ],
     );
   }
-Widget buildEditButton(BuildContext context) => ButtonWidget(
-  text: 'Edit info',
-  
-  onClicked: () {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
-  },
-);
 
+  Widget buildEditButton(BuildContext context) => ButtonWidget(
+        text: 'Edit info',
+        onClicked: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
+        },
+      );
+
+  Widget buildAnotherButton(BuildContext context) => ButtonWidget(
+        text: 'Medical form', // Button text
+        onClicked: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PatientProfile2()));
+        },
+      );
 
   Widget buildName(User user) => Column(
         children: [
@@ -144,7 +179,7 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
             user.name,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Text(
             user.email,
             style: TextStyle(color: Colors.grey),
@@ -153,23 +188,24 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
       );
 
   Widget buildAbout(User user) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35),
+        padding: EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'About',
+              'Title',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Text(
-              user.description,
+              user.title,
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
           ],
         ),
       );
-       Widget buildSpecialty(User user) => Container(
+
+  Widget buildSpecialty(User user) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,7 +223,7 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
         ),
       );
 
-       Widget buildGender(User user) => Container(
+  Widget buildGender(User user) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,7 +241,7 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
         ),
       );
 
-       Widget buildAddress(User user) => Container(
+  Widget buildAddress(User user) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,7 +259,7 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
         ),
       );
 
-       Widget buildPhoneNumber(User user) => Container(
+  Widget buildPhoneNumber(User user) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 35),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -240,4 +276,60 @@ Widget buildEditButton(BuildContext context) => ButtonWidget(
           ],
         ),
       );
+
+  Widget buildBirthDate(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Birthdate',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.birthdate,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildYearsExp(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Years Experience',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.yearsExp,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildInstitution(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Workplace',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.institution,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
 }
+
+

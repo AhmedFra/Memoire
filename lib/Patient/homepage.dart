@@ -4,7 +4,7 @@ import 'package:sheesh/Patient/screen1.dart';
 import 'package:sheesh/Patient/Feedbacks.dart';
 import '../widgets/circle_button.dart';
 import 'Reminder.dart';
-import 'Symptoms.dart';
+import 'medical_folder.dart';
 import 'home.dart';
 
 class Patient extends StatefulWidget {
@@ -18,9 +18,9 @@ class _PatientState extends State<Patient> {
   int _selectedIndex = 0;
   static  List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    // SymptomTrackingPage(),
+    
     Reminders(),
-    ProfilePage(),
+    ProfileScreen(),
   ];
 
   @override
@@ -49,11 +49,6 @@ class _PatientState extends State<Patient> {
               icon: Icon(Icons.home_outlined, size: 27.0),
               label: 'Home',
             ),
-            // BottomNavigationBarItem(
-            //   activeIcon: Icon(Icons.calendar_month_rounded, size: 27.0),
-            //   icon: Icon(Icons.calendar_month_outlined, size: 27.0),
-            //   label: 'Appointments',
-            // ),
             BottomNavigationBarItem(
               activeIcon: Icon(Icons.calendar_month_rounded, size: 27.0),
               icon: Icon(Icons.calendar_month_outlined, size: 27.0),

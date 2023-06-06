@@ -52,7 +52,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Add Meddcine",style: TextStyle(
+              Text("Pick an Appointment",style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: Colors.black)),
@@ -100,59 +100,64 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     )
                   ],
                 ),
-                Muinput(title:"Remain" ,hint:"$_selectedRemind minutes early" ,
-                widget: DropdownButton(
-                  icon: Icon(Icons.keyboard_arrow_down,
-                  color: Colors.grey,),
-                  iconSize: 32,
-                  elevation: 4,
-                  underline:Container(height: 0) ,
-                  onChanged:(String? newValue){
-                    setState(() {
-                      _selectedRemind=int.parse(newValue!);
-                    });
-                  } ,
-                  items:remindList.map<DropdownMenuItem<String>>((int value){
-                    return DropdownMenuItem<String>(
-                      value: value.toString(),
-                      child: Text(value.toString()),
+                SizedBox(width: 12,),
+                Muinput(title:"SpecialInstructions" ,hint:"Enter your note " ,controller: _noteController,),
+                SizedBox(width: 12,),
+                Muinput(title:"Address" ,hint:"Enter your note " ,controller: _noteController,),
+                // Muinput(title:"Remain" ,hint:"$_selectedRemind minutes early" ,
+                // widget: DropdownButton(
+                //   icon: Icon(Icons.keyboard_arrow_down,
+                //   color: Colors.grey,),
+                //   iconSize: 32,
+                //   elevation: 4,
+                //   underline:Container(height: 0) ,
+                //   onChanged:(String? newValue){
+                //     setState(() {
+                //       _selectedRemind=int.parse(newValue!);
+                //     });
+                //   } ,
+                //   items:remindList.map<DropdownMenuItem<String>>((int value){
+                //     return DropdownMenuItem<String>(
+                //       value: value.toString(),
+                //       child: Text(value.toString()),
 
-                    );
-                  }
-                  ).toList(),
-                )
-                 ,),
-                 Muinput(title:"Repeat" ,hint:"$_selectedRepeat " ,
-                widget: DropdownButton(
-                  icon: Icon(Icons.keyboard_arrow_down,
-                  color: Colors.grey,),
-                  iconSize: 32,
-                  elevation: 4,
-                  underline:Container(height: 0) ,
-                  onChanged:(String? newValue){
-                    setState(() {
-                      _selectedRepeat=newValue!;
-                    });
-                  } ,
-                  items:repeatList.map<DropdownMenuItem<String>>((String? value){
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value!,style: TextStyle(color: Colors.grey),),
+                //     );
+                //   }
+                //   ).toList(),
+                // )
+                //  ,),
+                //  Muinput(title:"Repeat" ,hint:"$_selectedRepeat " ,
+                // widget: DropdownButton(
+                //   icon: Icon(Icons.keyboard_arrow_down,
+                //   color: Colors.grey,),
+                //   iconSize: 32,
+                //   elevation: 4,
+                //   underline:Container(height: 0) ,
+                //   onChanged:(String? newValue){
+                //     setState(() {
+                //       _selectedRepeat=newValue!;
+                //     });
+                //   } ,
+                //   items:repeatList.map<DropdownMenuItem<String>>((String? value){
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value!,style: TextStyle(color: Colors.grey),),
 
-                    );
-                  }
-                  ).toList(),
-                )
-                 ,),
+                //     );
+                //   }
+                //   ).toList(),
+                // )
+                //  ,),
                  SizedBox(height: 18,),
                  Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                     _colorPallete(),
+                    Expanded(child: SizedBox()),
+                    //  _colorPallete(),
                      Padding(
                        padding: const EdgeInsets.only(top: 25),
-                       child: Mybutton(label:"Add Medcine" ,onTap:() =>_validdateDate() ),
+                       child: Mybutton(label:"Confirme " ,onTap:() =>_validdateDate() ),
                      ),
                       ],
                     )

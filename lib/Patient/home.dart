@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(height: 16),
                           ElevatedButton(
                             child: Text(
-                              'Pick an Appointment',
+                              'Find a specialist',
                               style: TextStyle(fontSize: 18),
                               
                               
@@ -233,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       margin: EdgeInsets.only(top:10,left: 20),
                               height: 100,        
                               decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 229, 235, 238), 
+                              color: Color.fromARGB(255, 229, 235, 238),
                               borderRadius: BorderRadius.circular(12),         
                               ),
                                child: Padding(
@@ -244,9 +244,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('08:00', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                            Text('10:00', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                             SizedBox(height: 5,),
-                            Text('20/05/2023', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
+                            Text('6/6/2023', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
                           ],
                           ),
                       ),
@@ -263,11 +263,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                           children: [
                           Text(
-                          'Waiting',
+                          'specialInstructions: Bring wheelchair',
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            
                             fontSize: 15,
-                            color: Colors.orange
+                            color: Color.fromARGB(255, 0, 0, 0)
                                ),
                                ),
                              
@@ -300,47 +300,44 @@ class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
-      height: preferredSize.height,
+      padding: EdgeInsets.only(top: 50, left: 20, right: 20),
+      height: 110,
       width: double.infinity,
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFF73AEF5),
-            Color(0xFF61A4F1),
-            Color(0xFF478FE0),
-            Color(0xFF398AE5),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+        gradient: LinearGradient(colors: [        
+           Color(0xFF73AEF5),
+           Color(0xFF61A4F1),
+           Color(0xFF478FE0),
+           Color(0xFF398AE5),],
+           begin: Alignment.topCenter,
+           end: Alignment.bottomCenter,
+           )      
       ),
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Welcome!',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
-                  fontSize: 24.0,
-                ),
+              
+              Text('Welcome!',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1,
+                fontSize: 24.0,              
+              ), 
               ),
               CircleButton(
                 icon: Icons.notifications,
-                onPressed: () {},
-              ),
+                onPressed: () {  },
+              ),             
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 20,),
+          // const SearchTextField(),
+
         ],
       ),
     );

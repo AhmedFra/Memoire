@@ -164,10 +164,9 @@ class _RemindersState extends State<Reminders> {
     return Container(
                 margin: EdgeInsets.only(left: 20 ,right: 20,top: 10),
                 child: Row(
-                  mainAxisAlignment:MainAxisAlignment.spaceBetween ,
+                  mainAxisAlignment:MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      
                       child: Column(
                         children: [
                           Text(DateFormat.yMMMEd().format(DateTime.now()),
