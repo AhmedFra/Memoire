@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sheesh/Patient/profile.dart';
 import 'package:sheesh/Patient/screen1.dart';
-import 'package:sheesh/Patient/Feedbacks.dart';
 import '../widgets/circle_button.dart';
 import 'Reminder.dart';
 import 'medical_folder.dart';

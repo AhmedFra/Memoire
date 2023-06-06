@@ -40,7 +40,6 @@ dependencies:
   editable_image: ^2.0.0
   image_picker: ^0.8.7+5
   calendar_timeline: ^1.1.2
-  google_maps_flutter: ^2.2.8
   geolocator: ^9.0.2
   http: ^0.13.4
   intl: 
@@ -48,9 +47,12 @@ dependencies:
   sqflite:
   get_storage: ^2.1.1
   sqflite_common_ffi: ^2.2.5
-  date_picker_timeline: ^1.2.3
-  shared_preferences: ^2.1.1
+  date_picker_timeline: 
+  shared_preferences: 
+  latlong2: ^0.8.2
+  flutter_map: ^0.14.0
   url_launcher: ^6.1.11
+  geocoding: ^2.1.0
 dev_dependencies:
   
 

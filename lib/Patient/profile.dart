@@ -11,6 +11,7 @@ import '../widgets/button_widget.dart';
 import '../widgets/circle_button.dart';
 import '../widgets/profile_widget.dart';
 import 'homepage.dart';
+import 'medical_folder.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key});
@@ -169,7 +170,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
   Widget buildAnotherButton(BuildContext context) => ButtonWidget(
         text: 'Medical form', // Button text
         onClicked: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => PatientProfile2()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Medical_Folder()));
         },
       );
 
