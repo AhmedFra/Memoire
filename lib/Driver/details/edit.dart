@@ -9,12 +9,12 @@ import 'package:sheesh/widgets/appbar_widget.dart';
 import 'package:sheesh/widgets/button_widget.dart';
 import 'package:sheesh/widgets/textfield_widget.dart';
 
-class EditProfilePage2 extends StatefulWidget {
+class EditProfilePage3 extends StatefulWidget {
   @override
-  _EditProfilePage2State createState() => _EditProfilePage2State();
+  _EditProfilePage3State createState() => _EditProfilePage3State();
 }
 
-class _EditProfilePage2State extends State<EditProfilePage2> {
+class _EditProfilePage3State extends State<EditProfilePage3> {
   User user = UserPreferences.myUser;
   File? _image;
 

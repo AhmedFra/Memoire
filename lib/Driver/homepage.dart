@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'details/Upcoming_Appointments.dart';
 import 'details/appoinment_mange.dart';
+import 'details/profile.dart';
 
 
 class DriverDashboardScreen extends StatefulWidget {
@@ -480,12 +481,11 @@ height: 60,
 // Add other properties as needed
 ),
 onPressed: () {
-// Navigate to a different page here
-// Example:
-// Navigator.push(
-// context,
-// MaterialPageRoute(builder: (context) => ProfilePage()),
-// );
+
+Navigator.push(
+context,
+MaterialPageRoute(builder: (context) => ProfileScreen01()),
+);
 },
 ),
 ],

@@ -1,89 +1,36 @@
 import 'package:flutter/material.dart';
 
-class DriverProfilePage extends StatefulWidget {
+import 'package:flutter/services.dart';
+import 'package:sheesh/Patient/pateintpage.dart';
+import 'package:sheesh/Patient/profile/profile2.dart';
+import 'package:sheesh/screens/edit_profile_screen.dart';
+import 'package:sheesh/screens/featured_screen.dart';
+
+import '../../Patient/screen1.dart';
+import '../../models/user.dart';
+import '../../utilities/user_pref.dart';
+import '../../widgets/button_widget.dart';
+import '../../widgets/profile_widget.dart';
+import 'edit.dart';
+
+
+class ProfileScreen01 extends StatefulWidget {
+  const ProfileScreen01({Key? key});
+
   @override
-  _DriverProfilePageState createState() => _DriverProfilePageState();
+  State<ProfileScreen01> createState() => _ProfileScreen01State();
 }
 
-class _DriverProfilePageState extends State<DriverProfilePage> {
-  String driverName = 'John Doe';
-  String driverEmail = 'johndoe@example.com';
-  String driverPhone = '+1 123-456-7890';
-  String driverLocation = 'New York, USA';
-
+class _ProfileScreen01State extends State<ProfileScreen01> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(
+        body: Column(
           children: [
-            Center(
-              child: CircleAvatar(
-                radius: 60,
-                backgroundImage: AssetImage('assets/driver_photo.png'),
-              ),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Name:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(driverName),
-            SizedBox(height: 10),
-            Text(
-              'Email:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(driverEmail),
-            SizedBox(height: 10),
-            Text(
-              'Phone:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(driverPhone),
-            SizedBox(height: 10),
-            Text(
-              'Location:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(driverLocation),
-            SizedBox(height: 20),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Navigate to edit profile page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => EditDriverProfilePage(
-                        driverName: driverName,
-                        driverEmail: driverEmail,
-                        driverPhone: driverPhone,
-                        driverLocation: driverLocation,
-                      ),
-                    ),
-                  );
-                },
-                child: Text('Edit Profile'),
-              ),
-            ),
+            CustomAppBar(),
+            Expanded(child: ProfileScreen01Body()),
           ],
         ),
       ),
@@ -91,103 +38,302 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
   }
 }
 
-class EditDriverProfilePage extends StatefulWidget {
-  final String driverName;
-  final String driverEmail;
-  final String driverPhone;
-  final String driverLocation;
-
-  const EditDriverProfilePage({
-    required this.driverName,
-    required this.driverEmail,
-    required this.driverPhone,
-    required this.driverLocation,
-  });
-
-  @override
-  _EditDriverProfilePageState createState() => _EditDriverProfilePageState();
-}
-
-class _EditDriverProfilePageState extends State<EditDriverProfilePage> {
-  late TextEditingController nameController;
-  late TextEditingController emailController;
-  late TextEditingController phoneController;
-  late TextEditingController locationController;
-
-  @override
-  void initState() {
-    super.initState();
-    nameController = TextEditingController(text: widget.driverName);
-    emailController = TextEditingController(text: widget.driverEmail);
-    phoneController = TextEditingController(text: widget.driverPhone);
-    locationController = TextEditingController(text: widget.driverLocation);
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    locationController.dispose();
-    super.dispose();
-  }
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Profile'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                labelText: 'Name',
-              ),
-            ),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-              ),
-            ),
-            TextField(
-              controller: phoneController,
-              decoration: InputDecoration(
-                labelText: 'Phone',
-              ),
-            ),
-            TextField(
-              controller: locationController,
-              decoration: InputDecoration(
-                labelText: 'Location',
-              ),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Save the updated profile information
-                  String updatedName = nameController.text;
-                  String updatedEmail = emailController.text;
-                  String updatedPhone = phoneController.text;
-                  String updatedLocation = locationController.text;
-
-                  // Perform the save operation here
-
-                  // Go back to the profile page with the updated information
-                  Navigator.pop(context);
-                },
-                child: Text('Save'),
-              ),
-            ),
-          ],
+    return Container(
+      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
+      height: 110,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
         ),
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF73AEF5),
+            Color(0xFF61A4F1),
+            Color(0xFF478FE0),
+            Color(0xFF398AE5),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context); // Go back to the previous page
+                },
+              ),
+              Text(
+                'Profile',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                  fontSize: 24.0,
+                ),
+              ),
+              CircleButton(
+                icon: Icons.notifications,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+        ],
       ),
     );
   }
 }
+
+class ProfileScreen01Body extends StatefulWidget {
+  const ProfileScreen01Body({Key? key});
+
+  @override
+  State<ProfileScreen01Body> createState() => _ProfileScreen01BodyState();
+}
+
+class _ProfileScreen01BodyState extends State<ProfileScreen01Body> {
+  @override
+  Widget build(BuildContext context) {
+    final user = UserPreferences.myUser;
+
+    return ListView(
+      physics: BouncingScrollPhysics(),
+      children: [
+        const SizedBox(height: 10),
+        ProfileWidget(
+          imagePath: user.imagePath,
+          onClicked: () async {},
+          isEdit: false,
+        ),
+        const SizedBox(height: 24),
+        buildName(user),
+        const SizedBox(height: 10),
+        Center(child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            buildEditButton(context),
+            
+          ],
+        )),
+
+        const SizedBox(height: 10),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Title',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                "Driver",
+                style: TextStyle(fontSize: 16, height: 1.4),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+        buildGender(user),
+        const SizedBox(height: 10),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Address',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                "Nouvelle ville Ali mendjli constantine, Constantine",
+                style: TextStyle(fontSize: 16, height: 1.4),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Phone Number',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                "+213656672495",
+                style: TextStyle(fontSize: 16, height: 1.4),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+         Padding(
+           padding: EdgeInsets.symmetric(horizontal: 35),
+           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Birthdate',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                "31/05/1990",
+                style: TextStyle(fontSize: 16, height: 1.4),
+              ),
+            ],
+                 ),
+         ),
+        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
+        const SizedBox(height: 10),
+      
+      ],
+    );
+  }
+
+  Widget buildEditButton(BuildContext context) => ButtonWidget(
+        text: 'Edit info',
+        onClicked: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage3()));
+        },
+      );
+
+
+
+  Widget buildName(User user) => Column(
+        children: [
+          Text(
+            user.name,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+          SizedBox(height: 4),
+          Text(
+            user.email,
+            style: TextStyle(color: Colors.grey),
+          )
+        ],
+      );
+
+  Widget buildAbout(User user) => Container(
+        padding: EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Title',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              user.title,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildSpecialty(User user) => Container();
+
+  Widget buildGender(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Gender',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.gender,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildAddress(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Address',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.address,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildPhoneNumber(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Phone Number',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.phoneNumber,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildBirthDate(User user) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 35),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Birthdate',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              user.birthdate,
+              style: TextStyle(fontSize: 16, height: 1.4),
+            ),
+          ],
+        ),
+      );
+
+  Widget buildYearsExp(User user) => Container();
+
+  Widget buildInstitution(User user) => Container();
+}
+
+

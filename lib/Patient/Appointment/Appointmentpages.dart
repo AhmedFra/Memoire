@@ -33,8 +33,9 @@ class _AppointmentPageState extends State<AppointmentPage> {
   String _selectedRepeat = "None";
   List<String> repeatList = ["None", "Daily", "Weekly", "Monthly"];
   int _selectedColor = 0;
-  LatLng? _selectedLocation;
-  String _selectedAddress = '';
+ LatLng? _selectedLocation;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +122,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
               SizedBox(width: 12),
               Muinput(
                 title: "Address",
-                hint: _selectedAddress,
+                hint: _selectedLocation?.toString() ?? '',
                 widget: IconButton(
                   onPressed: () {
                     _getLocationFromMap();
@@ -268,22 +269,9 @@ class _AppointmentPageState extends State<AppointmentPage> {
     );
 
     if (selectedLocation != null) {
-      List<Placemark> placemarks = await placemarkFromCoordinates(
-        selectedLocation.latitude,
-        selectedLocation.longitude,
-      );
-
-      if (placemarks.isNotEmpty) {
-        Placemark placemark = placemarks[0];
-        String address = placemark.street ?? '';
-        setState(() {
-          _selectedLocation = selectedLocation;
-          _selectedAddress = address;
-        });
-      } else {
-        // Handle case when no placemarks are found
-        print('No placemarks found');
-      }
+      setState(() {
+        _selectedLocation = selectedLocation;
+      });
     }
   }
 }

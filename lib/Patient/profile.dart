@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 import 'package:sheesh/Patient/pateintpage.dart';
+import 'package:sheesh/Patient/profile/profile2.dart';
 import 'package:sheesh/screens/edit_profile_screen.dart';
 import 'package:sheesh/screens/featured_screen.dart';
 import '../models/user.dart';
@@ -128,11 +129,23 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
         )),
 
         const SizedBox(height: 10),
-        buildAbout(user),
-        const SizedBox(height: 10),
-        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
-        const SizedBox(height: 10),
-        buildSpecialty(user),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Title',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                "Patient",
+                style: TextStyle(fontSize: 16, height: 1.4),
+              ),
+            ],
+          ),
+        ),
         const SizedBox(height: 10),
         Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
@@ -150,12 +163,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
         buildBirthDate(user),
         Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
         const SizedBox(height: 10),
-        buildYearsExp(user),
-        Divider(height: 10, color: Colors.black54, endIndent: 20, indent: 20,),
-        const SizedBox(height: 10),
-        buildInstitution(user),
-        const SizedBox(height: 10),
-    
+      
       ],
     );
   }
@@ -163,7 +171,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
   Widget buildEditButton(BuildContext context) => ButtonWidget(
         text: 'Edit info',
         onClicked: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage2()));
         },
       );
 
@@ -206,23 +214,7 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
         ),
       );
 
-  Widget buildSpecialty(User user) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Specialty',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              user.specialty,
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-          ],
-        ),
-      );
+  Widget buildSpecialty(User user) => Container();
 
   Widget buildGender(User user) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 35),
@@ -296,41 +288,9 @@ class _ProfileScreenBodyState extends State<ProfileScreenBody> {
         ),
       );
 
-  Widget buildYearsExp(User user) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Years Experience',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              user.yearsExp,
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-          ],
-        ),
-      );
+  Widget buildYearsExp(User user) => Container();
 
-  Widget buildInstitution(User user) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 35),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Workplace',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              user.institution,
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-          ],
-        ),
-      );
+  Widget buildInstitution(User user) => Container();
 }
 
 

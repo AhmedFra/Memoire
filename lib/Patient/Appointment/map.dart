@@ -24,7 +24,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Location'),
+        backgroundColor:  Color(0xFF398AE5),
       ),
       body: FlutterMap(
         options: MapOptions(
